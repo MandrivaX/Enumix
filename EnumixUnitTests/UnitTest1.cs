@@ -22,7 +22,9 @@ namespace EnumixUnitTests
         public void TestMethod1()
         {
             IEnumix enu = new EnumixImpl();
-            string s = enu.GetDisplayName(TestEnumType.B);
+            string s1 = enu.GetDisplayName(TestEnumType.B);
+            string s2 = enu.GetEnumElements<TestEnumType>();
+            string s3 = enu.GetEnumElementsWithSeparator<TestEnumType>(",");
         }
     }
 }

@@ -7,5 +7,7 @@ namespace Enumix.Interfaces
     public interface IEnumix
     {
         string GetDisplayName(Enum val);
+        string GetEnumElements<K>();
+        string GetEnumElementsWithSeparator<K>(string separator);
     }
 }
