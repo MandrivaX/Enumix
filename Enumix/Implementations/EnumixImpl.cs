@@ -1,4 +1,5 @@
-﻿using Enumix.Interfaces;
+﻿using Enumix.EnumExtensions;
+using Enumix.Interfaces;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -18,8 +19,12 @@ namespace Enumix.Implementations
                   ?.Name
                   ?? val.ToString();
         }
+        public string GetDescription(Enum val)
+        {
+            return val.GetDescription();
+        }
 
-        public  string GetEnumElements<K>()
+        public  string GetEnumElementsDisplayName<K>()
         {
             if (typeof(K).BaseType != typeof(Enum))
             {
@@ -35,7 +40,7 @@ namespace Enumix.Implementations
         }
 
 
-        public string GetEnumElementsWithSeparator<K>(string separator)
+        public string GetEnumElementsDisplayName<K>(string separator)
         {
             if (typeof(K).BaseType != typeof(Enum))
             {
@@ -45,6 +50,38 @@ namespace Enumix.Implementations
             foreach (string enumMember in Enum.GetNames(typeof(K)))
             {
                 stringBuilder.Append($"{enumMember} {separator}");
+            }
+            stringBuilder.Length--;
+            return stringBuilder.ToString();
+        }
+
+        public string GetEnumElementsDescription<K>()
+        {
+            if (typeof(K).BaseType != typeof(Enum))
+            {
+                throw new InvalidCastException();
+            }
+            var stringBuilder = new StringBuilder();
+
+            foreach (Enum enumMember in Enum.GetValues(typeof(K)))
+            {
+                stringBuilder.Append($"{enumMember.GetDescription()}|");
+            }
+            stringBuilder.Length--;
+            return stringBuilder.ToString();
+        }
+
+        public string GetEnumElementsDescription<K>(string separator)
+        {
+            if (typeof(K).BaseType != typeof(Enum))
+            {
+                throw new InvalidCastException();
+            }
+            var stringBuilder = new StringBuilder();
+
+            foreach (Enum enumMember in Enum.GetValues(typeof(K)))
+            {
+                stringBuilder.Append($"{enumMember.GetDescription()}  {separator}");
             }
             stringBuilder.Length--;
             return stringBuilder.ToString();
