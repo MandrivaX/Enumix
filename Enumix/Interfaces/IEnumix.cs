@@ -7,35 +7,35 @@ namespace Enumix.Interfaces
     public interface IEnumix
     {
         /// <summary>
-        /// Get display name of selected enum memnber
+        /// Get display name of selected enum member
         /// </summary>
         /// <param name="val"></param>
         /// <returns></returns>
         string GetDisplayName(Enum val);
 
         /// <summary>
-        /// Get display names of enums memnber
+        /// Get display names of enums member
         /// </summary>
         /// <param name="val"></param>
         /// <returns></returns>
         string GetEnumElementsDisplayName<K>();
-        
+
         /// <summary>
-        /// Get display names of enums memnber with separator
+        /// Get display names of enums member with separator
         /// </summary>
         /// <param name="val"></param>
         /// <returns></returns>
         string GetEnumElementsDisplayName<K>(string separator);
-        
+
         /// <summary>
-        /// Get Description of enums memnber
+        /// Get Description of enums member
         /// </summary>
         /// <param name="val"></param>
         /// <returns></returns>
         string GetDescription(Enum val);
 
         /// <summary>
-        /// Get Descriptions of enums memnber
+        /// Get Descriptions of enums member
         /// </summary>
         /// <param name="val"></param>
         /// <returns></returns>
@@ -47,5 +47,11 @@ namespace Enumix.Interfaces
         /// <param name="val"></param>
         /// <returns></returns>
         string GetEnumElementsDescription<K>(string separator);
+
+        /// <summary>
+        /// Get Count of enums member
+        /// </summary>
+        /// <returns></returns>
+        int GetEnumCount<K>();
     }
 }

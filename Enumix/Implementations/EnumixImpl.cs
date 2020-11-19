@@ -86,5 +86,24 @@ namespace Enumix.Implementations
             stringBuilder.Length--;
             return stringBuilder.ToString();
         }
+
+        /// <summary>
+        /// Get Count of enums member
+        /// </summary>
+        /// <returns></returns>
+        public int GetEnumCount<K>()
+        {
+            int count = 0;
+            if (typeof(K).BaseType != typeof(Enum))
+            {
+                throw new InvalidCastException();
+            }
+
+            foreach (Enum enumMember in Enum.GetValues(typeof(K)))
+            {
+                count++;
+            }
+            return count;
+        }
     }
 }

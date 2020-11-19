@@ -16,7 +16,9 @@ namespace EnumixUnitTests
             [Display(Name = "BB")]
             B,
             [Display(Name = "CC")]
-            C
+            C,
+            [Display(Name = "DD")]
+            D
         }
         enum TestEnumTypeDecs
         {
@@ -38,8 +40,12 @@ namespace EnumixUnitTests
             string s4 = enu.GetEnumElementsDescription<TestEnumTypeDecs>();
             string s5 = enu.GetEnumElementsDescription<TestEnumTypeDecs>(";");
             string s6 = enu.GetDescription(TestEnumTypeDecs.Red);
+            int s7 = enu.GetEnumCount<TestEnumType>();
+            int s8 = enu.GetEnumCount<TestEnumTypeDecs>();
 
             Assert.AreEqual("BB", s1);
+            Assert.AreEqual(3, s8);
+            Assert.AreEqual(4, s7);
         }
     }
 }

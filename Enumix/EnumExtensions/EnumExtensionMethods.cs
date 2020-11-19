@@ -26,5 +26,16 @@ namespace Enumix.EnumExtensions
             }
             return GenericEnum.ToString();
         }
+
+
+        /// <summary>
+        /// Get Count of elements of enum
+        /// </summary>
+        public static int GetCountEnum(this Enum GenericEnum)
+        {
+            Type genericEnumType = GenericEnum.GetType();
+            int count = genericEnumType.GetFields().Count();  //genericEnumType.declare;
+            return count--;
+        }
     }
 }
